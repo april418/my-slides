@@ -1,21 +1,22 @@
 'use client';
 
 import {useEffect, useState} from 'react';
-import {getSlide} from '@/actions/getSlide';
 import {Slide} from '@/features/remark/components/Slide';
+import {getContent} from '@/features/github/lib/github';
 
 type Props = {
   filename: string;
+  download_url: string;
 };
 
-export function SlideViewer({filename}: Props) {
+export function SlideViewer({filename, download_url}: Props) {
   const [doc, setDoc] = useState<string | undefined>();
 
   useEffect(() => {
     (async () => {
-      setDoc(await getSlide({filename}));
+      setDoc(await getContent({download_url}));
     })();
-  }, [filename]);
+  }, [download_url]);
 
   return doc ? (
     <Slide doc={doc} />

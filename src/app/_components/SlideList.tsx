@@ -2,10 +2,10 @@
 
 import {useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
-import {getSlides} from '@/actions/getSlides';
 import {Container} from '@/features/nes-css/components/Container';
 import {RadioButton, RadioGroup} from '@/features/nes-css/components/Radio';
 import {Button} from '@/features/nes-css/components/Button';
+import {getContentDescriptors} from '@/features/github/lib/github';
 
 export function SlideList() {
   const router = useRouter();
@@ -14,8 +14,9 @@ export function SlideList() {
 
   useEffect(() => {
     (async () => {
-      setSlides(await getSlides());
-      console.log(slides);
+      setSlides(
+        (await getContentDescriptors({path: 'slides'})).map(slide => slide.name)
+      );
     })();
   }, []);
 
