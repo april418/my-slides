@@ -6,17 +6,17 @@ import {getContent} from '@/features/github/lib/github';
 
 type Props = {
   filename: string;
-  download_url: string;
 };
 
-export function SlideViewer({filename, download_url}: Props) {
+export function SlideViewer({filename}: Props) {
   const [doc, setDoc] = useState<string | undefined>();
 
   useEffect(() => {
     (async () => {
-      setDoc(await getContent({download_url}));
+      const content = await getContent({path: `slides/${filename}`});
+      setDoc(content);
     })();
-  }, [download_url]);
+  }, [filename]);
 
   return doc ? (
     <Slide doc={doc} />
