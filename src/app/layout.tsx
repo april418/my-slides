@@ -1,7 +1,6 @@
 import type {Metadata} from 'next';
 import {Press_Start_2P} from 'next/font/google';
 import {RemarkProvider} from '@/features/remark/providers/RemarkProvider';
-import {NesCssProvider} from '@/features/nes-css/providers/NesCssProvider';
 import './global.sass';
 
 const pressStart2p = Press_Start_2P({weight: '400', subsets: ['latin']});
@@ -18,11 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <NesCssProvider>
-        <RemarkProvider>
-          <body className={pressStart2p.className}>{children}</body>
-        </RemarkProvider>
-      </NesCssProvider>
+      <RemarkProvider>
+        <body className={pressStart2p.className}>{children}</body>
+      </RemarkProvider>
     </html>
   );
 }
