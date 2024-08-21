@@ -8,6 +8,7 @@ import {
   useContext,
   useState,
 } from 'react';
+import classes from './Radio.module.sass';
 
 type RadioGroupContextProps = {
   name: string;
@@ -51,13 +52,13 @@ export function RadioButton(props: RadioButtonProps) {
   }
 
   return (
-    <label>
+    <label className={classes.radio__button}>
       <input
         {...inputProps}
         type="radio"
         className={clsx('nes-radio', {'is-dark': props.dark})}
       />
-      <span>{props.children}</span>
+      <span className={classes['radio__button-label']}>{props.children}</span>
     </label>
   );
 }
@@ -88,11 +89,7 @@ export function RadioGroup({
 
   return (
     <div
-      style={{
-        display: 'inline-flex',
-        flexDirection: vertical ? 'column' : 'row',
-        gap: '8px',
-      }}
+      className={clsx(classes.radio, {[classes['radio--vertical']]: vertical})}
     >
       <RadioGroupContextProvider
         value={{name, value, disabled, dark, onChange}}
