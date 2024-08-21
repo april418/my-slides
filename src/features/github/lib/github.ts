@@ -28,11 +28,9 @@ export async function getContentDescriptors({
   return await res.json();
 }
 
-export async function getContent({
-  download_url,
-}: {
-  download_url: string;
-  }): Promise<string> {
-  const res = await fetch(download_url);
+export async function getContent({path}: {path: string}): Promise<string> {
+  const res = await fetch(
+    `https://raw.githubusercontent.com/${process.env.NEXT_PUBLIC_GITHUB_OWNER}/${process.env.NEXT_PUBLIC_GITHUB_REPO}/${process.env.NEXT_PUBLIC_GITHUB_BRANCH}/${path}`
+  );
   return await res.text();
 }
