@@ -1,5 +1,4 @@
-import clsx from 'clsx';
-import {
+import React, {
   ChangeEvent,
   createContext,
   DetailedHTMLProps,
@@ -8,6 +7,7 @@ import {
   useContext,
   useState,
 } from 'react';
+import clsx from 'clsx';
 import classes from './Radio.module.sass';
 
 type RadioGroupContextProps = {
