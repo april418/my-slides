@@ -1,8 +1,10 @@
 import type {Metadata} from 'next';
-import {Inter} from 'next/font/google';
+import {Press_Start_2P} from 'next/font/google';
 import {RemarkProvider} from '@/features/remark/providers/RemarkProvider';
+import {NesCssProvider} from '@/features/nes-css/providers/NesCssProvider';
+import './global.css';
 
-const inter = Inter({subsets: ['latin']});
+const pressStart2p = Press_Start_2P({weight: '400', subsets: ['latin']});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,9 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <RemarkProvider>
-        <body className={inter.className}>{children}</body>
-      </RemarkProvider>
+      <NesCssProvider>
+        <RemarkProvider>
+          <body className={pressStart2p.className}>{children}</body>
+        </RemarkProvider>
+      </NesCssProvider>
     </html>
   );
 }
