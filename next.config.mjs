@@ -2,6 +2,9 @@
 const nextConfig = {
   output: 'export',
   basePath: process.env.BASE_PATH,
+  sassOptions: {
+    additionalData: `$base_path: ${process.env.BASE_PATH}`,
+  },
 };
 
 export default nextConfig;

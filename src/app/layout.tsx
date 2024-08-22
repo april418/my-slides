@@ -1,6 +1,8 @@
 import type {Metadata} from 'next';
 import {Press_Start_2P} from 'next/font/google';
+import clsx from 'clsx';
 import {RemarkProvider} from '@/features/remark/providers/RemarkProvider';
+import classes from './layout.module.sass';
 import './global.sass';
 
 const pressStart2p = Press_Start_2P({weight: '400', subsets: ['latin']});
@@ -18,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <RemarkProvider>
-        <body className={pressStart2p.className}>{children}</body>
+        <body className={clsx(pressStart2p.className, classes.MisakiGothic)}>
+          {children}
+        </body>
       </RemarkProvider>
     </html>
   );
