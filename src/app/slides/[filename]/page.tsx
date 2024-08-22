@@ -1,7 +1,7 @@
 import {getLocalSlides} from '@/features/local-files/lib/getLocalSlides';
 import {getContentDescriptors} from '@/features/github/lib/github';
-import {SlideViewer} from './_components/SlideViewer';
 import {BackButton} from './_components/BackButton';
+import {SlideshowWithFilename} from './_components/SlideshowWithFilename';
 
 export async function generateStaticParams() {
   if (process.env.NODE_ENV === 'development') {
@@ -25,7 +25,7 @@ export default function Page({params: {filename}}: Props) {
   return (
     <>
       <BackButton />
-      <SlideViewer filename={filename} />
+      <SlideshowWithFilename filename={filename} />
     </>
   );
 }

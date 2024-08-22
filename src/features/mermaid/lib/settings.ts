@@ -1,7 +1,7 @@
 import {MermaidConfig} from 'mermaid';
 
 export const settings: MermaidConfig = {
-  startOnLoad: true,
+  startOnLoad: false,
 };
 
 export default settings;
