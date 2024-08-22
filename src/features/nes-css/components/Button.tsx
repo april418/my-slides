@@ -1,4 +1,4 @@
-import {ButtonHTMLAttributes, InputHTMLAttributes} from 'react';
+import React, {ButtonHTMLAttributes, InputHTMLAttributes} from 'react';
 import clsx from 'clsx';
 
 export type ButtonProps =
