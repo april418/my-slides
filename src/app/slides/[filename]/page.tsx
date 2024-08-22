@@ -1,5 +1,6 @@
 import {getContentDescriptors} from '@/features/github/lib/github';
 import {SlideViewer} from './_components/SlideViewer';
+import {BackButton} from './_components/BackButton';
 
 export async function generateStaticParams() {
   const slides = await getContentDescriptors({path: 'slides'});
@@ -15,5 +16,10 @@ type Props = {
 };
 
 export default function Page({params: {filename}}: Props) {
-  return <SlideViewer filename={filename} />;
+  return (
+    <>
+      <BackButton />
+      <SlideViewer filename={filename} />
+    </>
+  );
 }
