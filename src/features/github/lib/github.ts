@@ -29,8 +29,11 @@ export async function getContentDescriptors({
 }
 
 export async function getContent({path}: {path: string}): Promise<string> {
+  const owner = process.env.NEXT_PUBLIC_GITHUB_OWNER;
+  const repo = process.env.NEXT_PUBLIC_GITHUB_REPO;
+  const branch = process.env.NEXT_PUBLIC_GITHUB_BRANCH;
   const res = await fetch(
-    `https://raw.githubusercontent.com/${process.env.NEXT_PUBLIC_GITHUB_OWNER}/${process.env.NEXT_PUBLIC_GITHUB_REPO}/${process.env.NEXT_PUBLIC_GITHUB_BRANCH}/${path}`
+    `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`
   );
   return await res.text();
 }
