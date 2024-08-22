@@ -27,11 +27,17 @@ export type IconProps = {
   empty?: boolean;
 };
 
-export function Icon({name, size, half, transparent, empty}: IconProps) {
+export function Icon({
+  name,
+  size = 'medium',
+  half,
+  transparent,
+  empty,
+}: IconProps) {
   return (
     <i
       className={clsx('nes-icon', name, {
-        [`is-${size}x`]: size,
+        [`is-${size}`]: size,
         'is-half': half,
         'is-transparent': transparent,
         'is-empty': empty,
