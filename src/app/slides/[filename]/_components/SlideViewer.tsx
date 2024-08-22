@@ -1,6 +1,4 @@
-'use client';
-
-import {useEffect, useState} from 'react';
+import {getLocalContent} from '@/features/local-files/lib/getLocalContent';
 import {Slide} from '@/features/remark/components/Slide';
 import {getContent} from '@/features/github/lib/github';
 
@@ -8,21 +6,11 @@ type Props = {
   filename: string;
 };
 
-export function SlideViewer({filename}: Props) {
-  const [doc, setDoc] = useState<string | undefined>();
+export async function SlideViewer({filename}: Props) {
+  const doc =
+    process.env.NODE_ENV === 'development'
+      ? await getLocalContent({filename})
+      : await getContent({path: `slides/${filename}`});
 
-  useEffect(() => {
-    (async () => {
-      const content = await getContent({path: `slides/${filename}`});
-      setDoc(content);
-    })();
-  }, [filename]);
-
-  return doc ? (
-    <Slide doc={doc} />
-  ) : (
-    <main>
-      <p>Loading...</p>
-    </main>
-  );
+  return <Slide doc={doc} />;
 }
