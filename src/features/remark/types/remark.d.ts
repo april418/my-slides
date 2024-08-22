@@ -1,5 +1,5 @@
 interface Remark {
-  create: () => void;
+  create: (settings?: any) => void;
 }
 
 declare var remark: Remark;
